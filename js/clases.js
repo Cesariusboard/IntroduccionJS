@@ -12,6 +12,7 @@ En este ejemplo crearemos a los personajes principales de Rick y Morty, los cual
 
 class Personaje {
     constructor(nombre, apellido, edad, aficiones = []) {
+        // this es la instancia de la clase, necesitas el this para llamar a los atributos 
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
@@ -21,6 +22,7 @@ class Personaje {
     presentarse() {
         switch (this.aficiones.length) {
             case (0):
+                // en este caso de switch no hay break pq ya hay un return y un return no puede tener break
                 return "Hola, me llamo " + this.nombre + " " + this.apellido + ". Tengo " + this.edad + " años.";
             case (1):
                 return "Hola, me llamo " + this.nombre + " " + this.apellido + ". Tengo " + this.edad + " años y me gusta " + this.aficionesToString();
@@ -34,7 +36,7 @@ class Personaje {
             aficiones +=
                 //Si i es menor que la longitud -1 quiero que me muestre la afición y una coma. Si no, significa que está en el penúltimo elemento y debe mostrar 'y' al final, o en el último elemento y mostrará un punto al final.
                 (i < this.aficiones.length - 1) ? this.aficiones[i] + ", " :
-                    (aficiones.length > 1) ? "y " + this.aficiones[i] + "." : this.aficiones[i] + ".";
+                (aficiones.length > 1) ? "y " + this.aficiones[i] + "." : this.aficiones[i] + ".";
         }
         return aficiones;
     }
@@ -55,7 +57,7 @@ class Humano extends Personaje {
         switch (key) {
             case ("abuelo"):
             case ("abuela"):
-                reverseKey = (this.hombre) ?  "nieto" : "nieta;";
+                reverseKey = (this.hombre) ? "nieto" : "nieta;";
                 break;
             case ("padre"):
             case ("madre"):
@@ -63,11 +65,11 @@ class Humano extends Personaje {
                 break;
             case ("hijo"):
             case ("hija"):
-                reverseKey = (this.hombre) ? "padre": "madre";
+                reverseKey = (this.hombre) ? "padre" : "madre";
                 break;
             case ("hermano"):
-            case("hermana"):
-            reverseKey = (this.hombre) ? "hermano" : "hermana";
+            case ("hermana"):
+                reverseKey = (this.hombre) ? "hermano" : "hermana";
                 break;
             case ("tío"):
             case ("tía"):
